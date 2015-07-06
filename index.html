@@ -15,43 +15,67 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
     <script src="../js/ie-emulation-modes-warning.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
   </head>
 
-  <body data-pinterest-extension-installed="cr1.37">
-
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
+  <body ng-app="MelodyOfHope" ng-controller="MainController">
+    <div id='cssmenu'>
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <a class="logo" href="#"><img alt="Brand" src="images/navbar-logo.png" style="width: 50px"></a>
+          <button type="button" class="navbar-toggle" ng-init="isCollapsed = true" ng-click="isCollapsed = !isCollapsed">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="http://getbootstrap.com/examples/starter-template/#">Project name</a>
         </div>
-        <div id="navbar" class="collapse navbar-collapse">
+        <div class="navbar-collapse" ng-class="{collapse: isCollapsed}">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="http://getbootstrap.com/examples/starter-template/#">Home</a></li>
-            <li><a href="http://getbootstrap.com/examples/starter-template/#about">About</a></li>
-            <li><a href="http://getbootstrap.com/examples/starter-template/#contact">Contact</a></li>
+             <li ng-class="{ active: isActive('/home')}" ng-click="collapseMenu()"><a href='#/home'><span>Home</span></a></li>
+             <li ng-class="{ active: isActive('/mission')}" ng-click="collapseMenu()"><a href='#/mission'><span>Mission</span></a></li>
+             <li ng-class="{ active: isActive('/events')}" ng-click="collapseMenu()"><a href='#/events'><span>Events</span></a></li>
+             <li ng-class="{ active: isActive('/newsletter')}" ng-click="collapseMenu()"><a href='#/newsletter'><span >Newsletter</span></a></li>
+             <li ng-class="{ active: isActive('/team')}" ng-click="collapseMenu()"><a href='#/team'><span>Team</span></a></li>
+             <li ng-class="{ active: isActive('/contact')}" ng-click="collapseMenu()"><a href='#/contact'><span>Contact</span></a></li>
+             <li ng-class="{ active: isActive('/donate')}" ng-click="collapseMenu()"><a href='#/donate'><span>Donate</span></a></li>
           </ul>
-        </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>    
+    <div class="content" ng-view padding-top:65px>
+    </div>
+    <div class="footer navbar-fixed-bottom">
+      <div class="row" align="center">
+          <a href="http://facebook.com/melodyofhope/" onmouseover="return fbchangeImage()" onmouseout="return fbchangeImageBack()" onmousedown="return fbhandleMDown()">
+          <img name="fbicon" src="./images/fbup.png" width="50" height="50" border="0" alt="Facebook"></a>
+          <a href="http://twitter.com/melodyofhopeorg/" onmouseover="return twchangeImage()" onmouseout="return twchangeImageBack()" onmousedown="return twhandleMDown()">
+          <img name="twicon" src="./images/twup.png" width="50" height="50" border="0" alt="Twitter"></a>
+          <a href="http://instagram.com/melodyofhope/" onmouseover="return igchangeImage()" onmouseout="return igchangeImageBack()" onmousedown="return ighandleMDown()">
+          <img name="igicon" src="./images/igup.png" width="50" height="50" border="0" alt="Instagram"></a>
       </div>
-    </nav>
+    </div> 
+  <!-- angular.js-->
+  <script type="text/javascript" src="scripts/angular.min.js"></script>
+  <script type="text/javascript" src="scripts/angular.min.js.map"></script>
+  <script type="text/javascript" src="scripts/angular-route.min.js"></script> 
+  <script type="text/javascript" src="scripts/ui-bootstrap.min.js"></script>  
 
-    <div class="container">
 
-      <div class="starter-template">
-        <h1>Melody of Hope</h1>
-        <p class="lead">Melody of Hope Rocks!!</p>
-      </div>
-
-    </div><!-- /.container -->
-
+    <!-- Angular /scripts and /controllers-->
+    <script type="text/javascript" charset="utf8" src="scripts/app.js"></script>
+    <script type="text/javascript" charset="utf8" src="controllers/mainctrl.js"></script>
+    <script type="text/javascript" charset="utf8" src="controllers/homectrl.js"></script>
+    <script type="text/javascript" charset="utf8" src="controllers/missionctrl.js"></script>
+    <script type="text/javascript" charset="utf8" src="controllers/eventsctrl.js"></script>
+    <script type="text/javascript" charset="utf8" src="controllers/blogctrl.js"></script>
+    <script type="text/javascript" charset="utf8" src="controllers/teamctrl.js"></script>
+    <script type="text/javascript" charset="utf8" src="controllers/contactctrl.js"></script>
+    <script type="text/javascript" charset="utf8" src="controllers/donatectrl.js"></script>
     <script src="../js/jquery.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+      <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>
